@@ -1,0 +1,14 @@
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\bin\Debug\GradeHelper.exe.config
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\bin\Debug\GradeHelper.exe
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\bin\Debug\GradeHelper.pdb
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.csproj.AssemblyReference.cache
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.Form1.resources
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.Properties.Resources.resources
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.csproj.GenerateResource.cache
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.csproj.CoreCompileInputs.cache
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.exe
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.pdb
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.Login.resources
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.MainMenuProfessor.resources
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.MainMenuAssistant.resources
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.MainMenuStudent.resources
