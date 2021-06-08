@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GradeHelper
 {
+    [Serializable]
     public class Student
     {
         public List<ExamPart> parts { get; set; }

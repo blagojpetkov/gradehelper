@@ -75,7 +75,7 @@ namespace GradeHelper
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 95);
+            this.label2.Location = new System.Drawing.Point(55, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 17);
             this.label2.TabIndex = 100;
@@ -84,7 +84,7 @@ namespace GradeHelper
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(169, 95);
+            this.label5.Location = new System.Drawing.Point(194, 95);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(205, 17);
             this.label5.TabIndex = 101;
@@ -93,7 +93,7 @@ namespace GradeHelper
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(403, 95);
+            this.label7.Location = new System.Drawing.Point(424, 95);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(179, 17);
             this.label7.TabIndex = 102;
@@ -112,7 +112,7 @@ namespace GradeHelper
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(599, 95);
+            this.label13.Location = new System.Drawing.Point(622, 95);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(185, 17);
             this.label13.TabIndex = 112;
@@ -120,14 +120,15 @@ namespace GradeHelper
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(6, 83);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(816, 369);
+            this.panel1.Size = new System.Drawing.Size(841, 369);
             this.panel1.TabIndex = 115;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(466, 55);
+            this.textBox3.Location = new System.Drawing.Point(508, 47);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(167, 22);
             this.textBox3.TabIndex = 116;
@@ -135,7 +136,7 @@ namespace GradeHelper
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(493, 33);
+            this.label3.Location = new System.Drawing.Point(535, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 17);
             this.label3.TabIndex = 117;
@@ -143,7 +144,7 @@ namespace GradeHelper
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(639, 47);
+            this.button3.Location = new System.Drawing.Point(681, 39);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(166, 38);
             this.button3.TabIndex = 118;
@@ -175,7 +176,7 @@ namespace GradeHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 522);
+            this.ClientSize = new System.Drawing.Size(859, 522);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);

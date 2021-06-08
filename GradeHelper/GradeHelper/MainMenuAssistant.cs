@@ -35,11 +35,16 @@ namespace GradeHelper
             int.TryParse(textBox3.Text, out txtno);
             for (int i = 0; i < txtno; i++)
             {
-                if (!Double.TryParse(panel1.Controls[("tb" + i * 10 + 1).ToString()].Text, out poeniOdDel) || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 2).ToString()].Text, out udelVoOcena) || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 3).ToString()].Text, out minPoeni) || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 4).ToString()].Text, out maxPoeni))
+                if (textBox1.Text == "" || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 1).ToString()].Text, out poeniOdDel) || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 2).ToString()].Text, out udelVoOcena) || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 3).ToString()].Text, out minPoeni) || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 4).ToString()].Text, out maxPoeni))
                 {
                     return;
                 }
                 s.parts.Add(new ExamPart(udelVoOcena, poeniOdDel, "part", minPoeni, maxPoeni));
+            }
+            if (students.Count > 0 && s.parts.Count != students[0].parts.Count)
+            {
+                MessageBox.Show("Студентите во списокот мораат да имаат ист број на различни делови кои ги полагаат. Тој број сега е " + students[0].parts.Count + ".");
+                return;
             }
             students.Add(s);
             this.Close();
@@ -50,12 +55,17 @@ namespace GradeHelper
             int txtno;
             bool success = int.TryParse(textBox3.Text, out txtno);
 
-            int pointX = 15;
+            int pointX = 25;
             int pointY = 30;
             panel1.Controls.Clear();
             if (success)
                 for (int i = 0; i < txtno; i++)
                 {
+                    Label label = new Label();
+                    label.Text = (i + 1) + ".";
+                    label.Location = new Point(pointX - 25, pointY + 4);
+                    label.Width = 25;
+                    panel1.Controls.Add(label);
                     TextBox a1 = new TextBox();
                     a1.Name = ("tb" + i * 10 + 1).ToString();
                     a1.Location = new Point(pointX, pointY);

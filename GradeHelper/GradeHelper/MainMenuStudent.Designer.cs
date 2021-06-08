@@ -41,6 +41,7 @@ namespace GradeHelper
             this.Index});
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1566, 537);
@@ -51,6 +52,7 @@ namespace GradeHelper
             this.Index.HeaderText = "Индекс";
             this.Index.MinimumWidth = 6;
             this.Index.Name = "Index";
+            this.Index.ReadOnly = true;
             this.Index.Width = 125;
             // 
             // MainMenuStudent

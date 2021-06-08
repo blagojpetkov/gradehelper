@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GradeHelper
 {
+    [Serializable]
     public class ExamPart
     {
         public double coefficient { get; set; }
