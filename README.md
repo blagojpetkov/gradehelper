@@ -154,6 +154,10 @@ At the end I add every text box to the panel where they will be displayed.
 With panel1.Show() I display the panel with the dynamically added textboxes. The label for each part
 serves the purpose to help the user know at what exact part he is at the moment.
 
+### You can find the user manual to the program in the Help section.
+<br/>
+![Untitled10](https://user-images.githubusercontent.com/85490029/121194147-c448df80-c86e-11eb-8575-152a3677d642.png)
+<br/><br/>
 ## Developed by: Blagoj Petkov 191097
 Every part of the code is written by me.
 <br/><br/>
