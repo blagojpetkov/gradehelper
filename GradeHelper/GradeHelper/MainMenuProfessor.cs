@@ -12,9 +12,106 @@ namespace GradeHelper
 {
     public partial class MainMenuProfessor : Form
     {
+        public List<Student> students { get; set; }
         public MainMenuProfessor()
         {
             InitializeComponent();
+        }
+
+        public MainMenuProfessor(List<Student> students)
+        {
+            InitializeComponent();
+            this.students = students;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double poeniOdDel = 0;
+            double udelVoOcena = 0;
+            double minPoeni = 0;
+            double maxPoeni = 0;
+            Student s = new Student(textBox1.Text);
+            int txtno = 0;
+            int.TryParse(textBox3.Text, out txtno);
+            for (int i = 0; i<txtno; i++)
+            {
+                if (!Double.TryParse(panel1.Controls[("tb" + i * 10 + 1).ToString()].Text, out poeniOdDel) ||!Double.TryParse(panel1.Controls[("tb" + i * 10 + 2).ToString()].Text, out udelVoOcena) ||!Double.TryParse(panel1.Controls[("tb" + i * 10 + 3).ToString()].Text, out minPoeni) ||!Double.TryParse(panel1.Controls[("tb" + i * 10 + 4).ToString()].Text, out maxPoeni))
+                {
+                    return;
+                }
+                s.parts.Add(new ExamPart(udelVoOcena, poeniOdDel, "part", minPoeni, maxPoeni));
+            }
+            students.Add(s);
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int txtno;
+            bool success = int.TryParse(textBox3.Text, out txtno);
+
+            int pointX = 15;
+            int pointY = 30;
+            panel1.Controls.Clear();
+            if(success)
+            for (int i = 0; i < txtno; i++)
+            {
+                TextBox a1 = new TextBox();
+                a1.Name = ("tb" + i*10 + 1).ToString();
+                a1.Location = new Point(pointX, pointY);
+
+                TextBox a2 = new TextBox();
+                a2.Name = ("tb" + i * 10 + 2).ToString();
+                a2.Location = new Point(pointX + 150, pointY);
+
+                TextBox a3 = new TextBox();
+                a3.Name = ("tb" + i * 10 + 3).ToString();
+                a3.Location = new Point(pointX + 300, pointY);
+
+                TextBox a4 = new TextBox();
+                a4.Name = ("tb" + i * 10 + 4).ToString();
+                a4.Location = new Point(pointX + 450, pointY);
+
+                panel1.Controls.Add(a1);
+                panel1.Controls.Add(a2);
+                panel1.Controls.Add(a3);
+                panel1.Controls.Add(a4);
+                panel1.Show();
+                pointY += 40;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string index = textBox1.Text;
+            foreach(var student in students.ToList())
+            {
+                if (student.index.Equals(index))
+                {
+                    students.Remove(student);
+                    MessageBox.Show("Успешно е избришан студентот со индекс " + index, "Успех");
+                    this.Close();
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string index = textBox1.Text;
+            foreach (var student in students.ToList())
+            {
+                if (student.index.Equals(index))
+                {
+                    students.Remove(student);
+                    button1_Click(null, null);
+                }
+            }
+
         }
     }
 }

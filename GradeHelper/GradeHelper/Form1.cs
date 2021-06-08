@@ -12,9 +12,11 @@ namespace GradeHelper
 {
     public partial class Form1 : Form
     {
+        public List<Student> students{ get; set; }
         public Form1()
         {
             InitializeComponent();
+            students = new List<Student>();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -23,7 +25,7 @@ namespace GradeHelper
             Login form = new Login("1234");
             if(form.ShowDialog()==DialogResult.OK)
             {
-                MainMenuProfessor form1 = new MainMenuProfessor();
+                MainMenuProfessor form1 = new MainMenuProfessor(students);
                 form1.ShowDialog();
             }
         }
@@ -39,7 +41,7 @@ namespace GradeHelper
             Login form = new Login("123");
             if (form.ShowDialog() == DialogResult.OK)
             {
-                MainMenuAssistant form1 = new MainMenuAssistant();
+                MainMenuAssistant form1 = new MainMenuAssistant(students);
                 form1.ShowDialog();
             }
         }
@@ -51,7 +53,7 @@ namespace GradeHelper
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            MainMenuStudent form = new MainMenuStudent();
+            MainMenuStudent form = new MainMenuStudent(students);
             form.ShowDialog();
         }
 

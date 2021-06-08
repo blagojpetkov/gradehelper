@@ -9,6 +9,6 @@ C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.csproj.Cor
 C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.exe
 C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.pdb
 C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.Login.resources
-C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.MainMenuProfessor.resources
-C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.MainMenuAssistant.resources
 C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.MainMenuStudent.resources
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.MainMenuAssistant.resources
+C:\Users\B5\gradehelper\GradeHelper\GradeHelper\obj\Debug\GradeHelper.MainMenuProfessor.resources
