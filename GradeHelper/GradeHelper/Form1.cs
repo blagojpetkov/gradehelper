@@ -15,49 +15,90 @@ namespace GradeHelper
 {
     public partial class Form1 : Form
     {
-        public List<Student> students{ get; set; }
+        public List<Subject> subjects { get; set; }
+        public User currentUser { get; set; }
         public Form1()
         {
             InitializeComponent();
-            students = new List<Student>();
+            subjects = new List<Subject>();
+            currentUser = null;
         }
+
+
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             //professor
+            if (currentUser != null && currentUser.password=="1234")
+            {
+                MainMenuProfessor form1 = new MainMenuProfessor(subjects);
+                form1.ShowDialog();
+                return;
+            }
+
             Login form = new Login("1234");
             if(form.ShowDialog()==DialogResult.OK)
             {
-                MainMenuProfessor form1 = new MainMenuProfessor(students);
+                currentUser = new User(form.name, form.password);
+                label5.Text = "Добредојде, " + currentUser.name;
+                MainMenuProfessor form1 = new MainMenuProfessor(subjects);
                 form1.ShowDialog();
             }
         }
-
         private void label2_Click(object sender, EventArgs e)
         {
             pictureBox2_Click(null, null);
         }
 
+
+
+
+
+
+
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             //assistant
+
+            if (currentUser != null)
+            {
+                MainMenuAssistant form1 = new MainMenuAssistant(subjects);
+                form1.ShowDialog();
+                return;
+            }
+
+
             Login form = new Login("123");
             if (form.ShowDialog() == DialogResult.OK)
             {
-                MainMenuAssistant form1 = new MainMenuAssistant(students);
+                currentUser = new User(form.name, form.password);
+                label5.Text = "Добредојде, " + currentUser.name;
+                MainMenuAssistant form1 = new MainMenuAssistant(subjects);
                 form1.ShowDialog();
             }
         }
-
         private void label4_Click(object sender, EventArgs e)
         {
             pictureBox4_Click(null, null);
         }
 
+
+
+
+
+
+
+
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            MainMenuStudent form = new MainMenuStudent(students);
-            form.ShowDialog();
+            //student
+            ChooseSubject form = new ChooseSubject(subjects);
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                MainMenuStudent dialog = new MainMenuStudent(form.selectedSubject.students);
+                dialog.Text = form.selectedSubject.name;
+                dialog.ShowDialog();
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -73,7 +114,7 @@ namespace GradeHelper
                 using (FileStream fs = new FileStream(dialog.FileName, FileMode.OpenOrCreate))
                 {
                     IFormatter formatter = new BinaryFormatter();
-                    formatter.Serialize(fs, students);
+                    formatter.Serialize(fs, subjects);
                 }
             }
         }
@@ -86,14 +127,14 @@ namespace GradeHelper
                 using (FileStream fs = new FileStream(dialog.FileName, FileMode.Open))
                 {
                     IFormatter formatter = new BinaryFormatter();
-                    students = (List<Student>)formatter.Deserialize(fs);
+                    subjects = (List<Subject>)formatter.Deserialize(fs);
                 }
             }
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            students = new List<Student>();
+            subjects = new List<Subject>();
         }
 
         private void упатствоЗаКористењеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,6 +146,37 @@ namespace GradeHelper
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NewSubject dialog = new NewSubject(subjects);
+            dialog.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            currentUser = null;
+            label5.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (currentUser != null && currentUser.password == "1234")
+            {
+                ChangeSubject change = new ChangeSubject(subjects);
+                change.ShowDialog();
+                return;
+            }
+
+            Login form = new Login("1234");
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                currentUser = new User(form.name, form.password);
+                label5.Text = "Добредојде, " + currentUser.name;
+                ChangeSubject change = new ChangeSubject(subjects);
+                change.ShowDialog();
+            }
         }
     }
 }

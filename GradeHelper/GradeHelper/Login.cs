@@ -25,6 +25,7 @@ namespace GradeHelper
         {
             if (textBox2.Text == password)
             {
+                this.name = textBox1.Text;
                 DialogResult = DialogResult.OK;
             }
             errorLabel.Text = "Внесовте погрешна лозинка";

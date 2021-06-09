@@ -41,10 +41,9 @@ namespace GradeHelper
             if (students.Count > 0)
             {
                 Student s = students[0];
-                int i = 0;
                 foreach (var part in s.parts)
                 {
-                    dataGridView1.Columns.Add("columnname", (1 + i++ + " дел").ToString());
+                    dataGridView1.Columns.Add("columnname", part.name);
                 }
                 dataGridView1.Columns.Add("columnname", "Вкупно скалирани поени");
                 dataGridView1.Columns.Add("columnname", "Оцена");
@@ -59,6 +58,7 @@ namespace GradeHelper
             
             foreach (var s in students)
             {
+                bool passed = true;
                 double value = 0;
                 y = 0;
                 dataGridView1.Rows[x].Cells[y++].Value = s.index;
@@ -70,12 +70,21 @@ namespace GradeHelper
                     {
                         dataGridView1.Rows[x].Cells[y].Value = part.points + " (недостигаат " + (part.minimumPointsToPass - part.points) + " поени)";
                         dataGridView1.Columns[y].Width += 50;
+                        passed = false;
                     }
                     value += part.value();
                     y++;
                 }
                 dataGridView1.Rows[x].Cells[y].Value = value;
-                dataGridView1.Rows[x].Cells[y+1].Value = getGrade(value);
+                if (passed)
+                {
+                    dataGridView1.Rows[x].Cells[y + 1].Value = getGrade(value);
+                }
+                else
+                {
+                    dataGridView1.Rows[x].Cells[y + 1].Value = "/";
+                    dataGridView1.Rows[x].DefaultCellStyle.BackColor = Color.Red;
+                }
                 x++;
             }
 

@@ -12,88 +12,102 @@ namespace GradeHelper
 {
     public partial class MainMenuAssistant : Form
     {
-        public List<Student> students { get; set; }
-        public MainMenuAssistant()
+        public List<Subject> subjects { get; set; }
+        public Subject selectedSubject { get; set; }
+
+        public MainMenuAssistant(List<Subject> subjects)
         {
             InitializeComponent();
+            selectedSubject = null;
+            this.subjects = subjects;
+            foreach (Subject s in subjects)
+            {
+                comboBox1.Items.Add(s.name);
+            }
         }
 
-        public MainMenuAssistant(List<Student> students)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitializeComponent();
-            this.students = students;
+
+            foreach (Subject s in subjects)
+            {
+                if (s.name.Equals(comboBox1.Text))
+                {
+                    selectedSubject = s;
+                    break;
+                }
+            }
+            if (selectedSubject == null) return;
+            int pointX = 25;
+            int pointY = 70;
+            panel1.Controls.Clear();
+            for (int i = 0; i < selectedSubject.numParts; i++)
+            {
+                Label label = new Label();
+                label.Text = selectedSubject.parts[i].name;
+                label.Location = new Point(pointX, pointY);
+                label.Width = 200;
+                panel1.Controls.Add(label);
+                TextBox a1 = new TextBox();
+                a1.Name = ("tb" + i * 10 + 1).ToString();
+                a1.Location = new Point(pointX + 250, pointY - 4);
+                //if there is a student with the index, fill in the textboxes
+                if (textBox1.Text != "")
+                {
+                    foreach (Student s in selectedSubject.students)
+                    {
+                        if (s.index == textBox1.Text)
+                        {
+                            a1.Text = s.parts[i].points.ToString();
+                        }
+                    }
+
+                }
+
+                panel1.Controls.Add(a1);
+                panel1.Show();
+                pointY += 40;
+            }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double poeniOdDel = 0;
-            double udelVoOcena = 0;
-            double minPoeni = 0;
-            double maxPoeni = 0;
-            Student s = new Student(textBox1.Text);
-            int txtno = 0;
-            int.TryParse(textBox3.Text, out txtno);
-            for (int i = 0; i < txtno; i++)
+            if (selectedSubject == null)
             {
-                if (textBox1.Text == "" || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 1).ToString()].Text, out poeniOdDel) || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 2).ToString()].Text, out udelVoOcena) || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 3).ToString()].Text, out minPoeni) || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 4).ToString()].Text, out maxPoeni))
+                MessageBox.Show("Потребно е да селектирате предмет за кој што сакате да додадете студент");
+                return;
+            }
+            double poeniOdDel = 0;
+            Student s = new Student(textBox1.Text);
+            for (int i = 0; i < selectedSubject.numParts; i++)
+            {
+                if (textBox1.Text == "" || !Double.TryParse(panel1.Controls[("tb" + i * 10 + 1).ToString()].Text, out poeniOdDel))
                 {
                     return;
                 }
-                s.parts.Add(new ExamPart(udelVoOcena, poeniOdDel, "part", minPoeni, maxPoeni));
+                s.parts.Add(new ExamPart(selectedSubject.parts[i].coefficient, poeniOdDel, selectedSubject.parts[i].name, selectedSubject.parts[i].minimumPointsToPass, selectedSubject.parts[i].maximum));
             }
-            if (students.Count > 0 && s.parts.Count != students[0].parts.Count)
+
+
+            //block adding a student with same index
+            foreach (Student student in selectedSubject.students.ToList())
             {
-                MessageBox.Show("Студентите во списокот мораат да имаат ист број на различни делови кои ги полагаат. Тој број сега е " + students[0].parts.Count + ".");
-                return;
+                if (student.index == s.index)
+                {
+                    MessageBox.Show("Студент со тој индекс веќе постои во листата на студенти. Доколку сакате да го измените мора да бидете во улога Професор", "Известување", MessageBoxButtons.OK);
+                    return;
+                }
             }
-            students.Add(s);
+            selectedSubject.students.Add(s);
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            int txtno;
-            bool success = int.TryParse(textBox3.Text, out txtno);
-
-            int pointX = 25;
-            int pointY = 30;
-            panel1.Controls.Clear();
-            if (success)
-                for (int i = 0; i < txtno; i++)
-                {
-                    Label label = new Label();
-                    label.Text = (i + 1) + ".";
-                    label.Location = new Point(pointX - 25, pointY + 4);
-                    label.Width = 25;
-                    panel1.Controls.Add(label);
-                    TextBox a1 = new TextBox();
-                    a1.Name = ("tb" + i * 10 + 1).ToString();
-                    a1.Location = new Point(pointX, pointY);
-
-                    TextBox a2 = new TextBox();
-                    a2.Name = ("tb" + i * 10 + 2).ToString();
-                    a2.Location = new Point(pointX + 150, pointY);
-
-                    TextBox a3 = new TextBox();
-                    a3.Name = ("tb" + i * 10 + 3).ToString();
-                    a3.Location = new Point(pointX + 300, pointY);
-
-                    TextBox a4 = new TextBox();
-                    a4.Name = ("tb" + i * 10 + 4).ToString();
-                    a4.Location = new Point(pointX + 450, pointY);
-
-                    panel1.Controls.Add(a1);
-                    panel1.Controls.Add(a2);
-                    panel1.Controls.Add(a3);
-                    panel1.Controls.Add(a4);
-                    panel1.Show();
-                    pointY += 40;
-                }
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }
