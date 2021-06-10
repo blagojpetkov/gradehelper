@@ -48,6 +48,17 @@ namespace GradeHelper
                 label.Location = new Point(pointX, pointY);
                 label.Width = 200;
                 panel1.Controls.Add(label);
+
+                Label label2 = new Label();
+                label2.Text = "/"+selectedSubject.parts[i].maximum.ToString();
+                label2.Location = new Point(pointX + 350, pointY);
+                label2.Width = 100;
+                panel1.Controls.Add(label2);
+
+
+
+
+
                 TextBox a1 = new TextBox();
                 a1.Name = ("tb" + i * 10 + 1).ToString();
                 a1.Location = new Point(pointX + 250, pointY - 4);
@@ -58,7 +69,7 @@ namespace GradeHelper
                     {
                         if (s.index == textBox1.Text)
                         {
-                            a1.Text = s.parts[i].points.ToString();
+                            a1.Text = s.parts[i].ToString();
                         }
                     }
 
@@ -88,7 +99,7 @@ namespace GradeHelper
                 {
                     return;
                 }
-                s.parts.Add(new ExamPart(selectedSubject.parts[i].coefficient, poeniOdDel, selectedSubject.parts[i].name, selectedSubject.parts[i].minimumPointsToPass, selectedSubject.parts[i].maximum));
+                s.parts.Add(poeniOdDel);
             }
 
 

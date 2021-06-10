@@ -384,7 +384,7 @@ namespace GradeHelper
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 712);
+            this.button1.Location = new System.Drawing.Point(13, 712);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 45);
             this.button1.TabIndex = 9;
@@ -403,7 +403,7 @@ namespace GradeHelper
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(389, 712);
+            this.button2.Location = new System.Drawing.Point(357, 712);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(166, 45);
             this.button2.TabIndex = 11;
@@ -413,7 +413,7 @@ namespace GradeHelper
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(202, 712);
+            this.button3.Location = new System.Drawing.Point(185, 712);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(166, 45);
             this.button3.TabIndex = 12;

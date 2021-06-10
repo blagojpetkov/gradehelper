@@ -12,10 +12,10 @@ namespace GradeHelper
 {
     public partial class MainMenuStudent : Form
     {
-        public List<Student> students { get; set; }
+        public Subject subject { get; set; }
         public static int getGrade(double points)
         {
-            if (points <= 100 && points >= 90)
+            if (points >= 90)
                 return 10;
             if (points < 90 && points >= 80)
                 return 9;
@@ -28,26 +28,26 @@ namespace GradeHelper
             else return 5;
 
         }
-        public MainMenuStudent(List<Student> students)
+        public MainMenuStudent(Subject subject)
         {
             InitializeComponent();
-            this.students = students;
+            this.subject = subject;
             init();
         }
 
         public void init()
         {
 
-            if (students.Count > 0)
+            if (subject.students.Count > 0)
             {
-                Student s = students[0];
-                foreach (var part in s.parts)
+                Student s = subject.students[0];
+                foreach (var part in subject.parts)
                 {
                     dataGridView1.Columns.Add("columnname", part.name);
                 }
                 dataGridView1.Columns.Add("columnname", "Вкупно скалирани поени");
                 dataGridView1.Columns.Add("columnname", "Оцена");
-                foreach (Student student in students)
+                foreach (Student student in subject.students)
                 {
                     DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[0].Clone();
                     dataGridView1.Rows.Add(row);
@@ -56,26 +56,31 @@ namespace GradeHelper
             int x = 0;
             int y = 0;
             
-            foreach (var s in students)
+            foreach (var s in subject.students)
             {
                 bool passed = true;
                 double value = 0;
                 y = 0;
                 dataGridView1.Rows[x].Cells[y++].Value = s.index;
-                foreach (var part in s.parts)
+                foreach (var part in subject.parts)
                 {
-                    if (part.points >= part.minimumPointsToPass)
-                        dataGridView1.Rows[x].Cells[y].Value = part.points;
+                    if (s.parts[y-1] >= part.minimumPointsToPass)
+                        dataGridView1.Rows[x].Cells[y].Value = s.parts[y-1];
                     else
                     {
-                        dataGridView1.Rows[x].Cells[y].Value = part.points + " (недостигаат " + (part.minimumPointsToPass - part.points) + " поени)";
+                        dataGridView1.Rows[x].Cells[y].Value = s.parts[y-1] + " (недостигаат " + (part.minimumPointsToPass - s.parts[y-1]) + " поени)";
                         dataGridView1.Columns[y].Width += 50;
                         passed = false;
                     }
-                    value += part.value();
+                    //formula
+                    value += part.coefficient * s.parts[y-1] / part.maximum * 100;
+                    //formula
                     y++;
                 }
                 dataGridView1.Rows[x].Cells[y].Value = value;
+
+
+
                 if (passed)
                 {
                     dataGridView1.Rows[x].Cells[y + 1].Value = getGrade(value);

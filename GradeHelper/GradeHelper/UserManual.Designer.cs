@@ -50,11 +50,11 @@ namespace GradeHelper
             // 
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(59, 40);
+            this.textBox1.Location = new System.Drawing.Point(59, 36);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(683, 416);
+            this.textBox1.Size = new System.Drawing.Size(683, 520);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
@@ -62,7 +62,7 @@ namespace GradeHelper
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(232, 459);
+            this.label2.Location = new System.Drawing.Point(232, 561);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(355, 20);
             this.label2.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace GradeHelper
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(62, 204);
+            this.label3.Location = new System.Drawing.Point(62, 347);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(372, 20);
             this.label3.TabIndex = 3;
@@ -84,7 +84,7 @@ namespace GradeHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 484);
+            this.ClientSize = new System.Drawing.Size(804, 588);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);

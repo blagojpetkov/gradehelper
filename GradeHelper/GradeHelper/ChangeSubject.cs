@@ -52,20 +52,6 @@ namespace GradeHelper
                     }
                     todo.parts.Add(new ExamPart(udelVoOcena, -100, panel1.Controls[("tb" + i * 10 + 1).ToString()].Text, minPoeni, maxPoeni));
                 }
-
-            for(int i = 0; i < todo.students.Count; i++)
-            {
-                for(int j = 0; j < todo.students[i].parts.Count; j++)
-                {
-                    if (!Double.TryParse(panel1.Controls[("tb" + j * 10 + 2).ToString()].Text, out udelVoOcena) || !Double.TryParse(panel1.Controls[("tb" + j * 10 + 3).ToString()].Text, out minPoeni) || !Double.TryParse(panel1.Controls[("tb" + j * 10 + 4).ToString()].Text, out maxPoeni))
-                    {
-                        return;
-                    }
-                    todo.students[i].parts[j].coefficient = udelVoOcena;
-                    todo.students[i].parts[j].minimumPointsToPass = minPoeni;
-                    todo.students[i].parts[j].maximum = maxPoeni;
-                }
-            }
                 this.Close();
         }
         private void button2_Click(object sender, EventArgs e)

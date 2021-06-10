@@ -9,12 +9,12 @@ namespace GradeHelper
     [Serializable]
     public class Student
     {
-        public List<ExamPart> parts { get; set; }
+        public List<double> parts { get; set; }
         public string index { get; set; }
         public Student(string index)
         {
             this.index = index;
-            parts = new List<ExamPart>();
+            parts = new List<double>();
         }
     }
 }

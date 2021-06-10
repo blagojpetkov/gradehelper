@@ -6,101 +6,93 @@ GradeHelper is a Windows Forms project designed to assist students and teachers 
 ## Usage
 
 The program allows for easy and error-resistant managing of the way students are graded. You can enter the program in 3 modes: Professor mode, Assistant professor mode and Student mode. Each mode has distinct characteristics that allow for different actions.
+<br/><br/>
+![2](https://user-images.githubusercontent.com/85490029/121540898-23415c80-ca07-11eb-97ef-a7826a5ac9bc.png)
 <br/>
-![Untitled1](https://user-images.githubusercontent.com/85490029/121184337-49c79200-c865-11eb-9c2a-093480c9a2aa.png)
+![3](https://user-images.githubusercontent.com/85490029/121540900-23d9f300-ca07-11eb-8df0-fc8be6e70aef.png)
+<br/>
+At first you should create a subject or open subjects that you have already created. The program supports serialization.
+<br/>
+You choose the number of parts that make up the subject that is being graded.<br/>
+For example, if the subject consists of a first part, a second part and a project task, you choose 3 parts.
+<br/>
+Click the Generate Fields button. Once generated the fields should be filled with information.
+Once they are completed you can click the Save button which will add your subject to the subjects list.
+<br/>
+
+![1](https://user-images.githubusercontent.com/85490029/121540892-22a8c600-ca07-11eb-985b-f8bfd8df2117.png)
 ### If you are a professor, you should select the first image or click on the text below it.
 ### If you are an assistant professor, select the second image or click on the text below it.
 ### Students as well as all those who want to look at the student table choose the third image or click on the text below it.
 
 ## For professors and assistant professors
-![Untitled2](https://user-images.githubusercontent.com/85490029/121184342-4af8bf00-c865-11eb-8bb3-9d01c6bcad90.png)
+![4](https://user-images.githubusercontent.com/85490029/121540903-23d9f300-ca07-11eb-945d-5db0d05da22a.png)
 <br/>
 <br/>
-First you need to enter a password to enter the corresponding main menu. 
+First you need to enter a password to enter the corresponding main menu. Once entered the user is saved until he logs out by pressing the Log out button.
 ###### The password for professors is 1234 and the password for assistant professors is 123.
-![Untitled3](https://user-images.githubusercontent.com/85490029/121184344-4b915580-c865-11eb-903d-030e49e2dc78.png)
+![5](https://user-images.githubusercontent.com/85490029/121540905-24728980-ca07-11eb-9ecf-32ffa4bf5fba.png)
 <br/>
-Enter the student index you want to add to the student list.
-<br/>
-<br/>
-#### Example with 4 parts
-![Untitled4](https://user-images.githubusercontent.com/85490029/121184346-4b915580-c865-11eb-98d0-86544ba04e48.png)
-<br/>
-<br/>
-#### Example with 10 parts, with a scrolling option
-![Untitled5](https://user-images.githubusercontent.com/85490029/121184349-4c29ec00-c865-11eb-8bd5-a4d8a0c29f0b.png)
-
-You choose the number of parts that make up the subject that is being graded.<br/>
-For example, if the subject consists of a first part, a second part and a project task, you choose 3 parts.<br/>
-Click the Generate Fields button. Once generated the fields should be filled with information.
-Once they are completed you can click the Save button which will add your student to the student list.
-<br/>
-![Untitled6](https://user-images.githubusercontent.com/85490029/121184350-4cc28280-c865-11eb-8318-4040ba997293.png)
+Enter the student index you want to add to the student list. Enter the subject and enter the grades that the students earned on the subject and press the Save button.
 <br/>
 <br/>
 #### The view from the student menu
-![Untitled7](https://user-images.githubusercontent.com/85490029/121184352-4cc28280-c865-11eb-8f5d-2a11facfad9b.png)
+![6](https://user-images.githubusercontent.com/85490029/121540907-24728980-ca07-11eb-8f28-a4ab0a54ad19.png)
+![7](https://user-images.githubusercontent.com/85490029/121540909-250b2000-ca07-11eb-9977-93ba0d5a791b.png)
 <br/>
 <br/>
 #### Deleting students
 If you want to delete a student, you can only do so if you are a professor.
 You need to enter the index of the student you want to delete and press the Delete Student button.
 <br/>
-![Untitled8](https://user-images.githubusercontent.com/85490029/121184354-4d5b1900-c865-11eb-93be-8f89e00e6e7c.png)
-<br/>
 <br/>
 #### Editing students
 If you want to edit a student you can only do so if you are a professor.
-You need to enter all the information just like when adding a new student and press the Edit Student button.
+You need to enter all the information just like when adding a new student and press the Save button.
 <br/>
-#### The view from the assistant professor menu
-![Untitled9](https://user-images.githubusercontent.com/85490029/121184357-4d5b1900-c865-11eb-8a10-c350c06a4868.png)
+![8](https://user-images.githubusercontent.com/85490029/121540914-250b2000-ca07-11eb-81c3-8a4844ccaadf.png)
 <br/>
+You can Edit a subject by pressing the Edit Subject button
 <br/>
 ## Data structures and functions
 
-The project consists of 6 Windows Forms and 2 Classes. <br/><br/>
+The project consists of 9 Windows Forms and 5 Classes. <br/><br/>
 ### Windows Forms:
 * Form1.cs
 * Login.cs
 * MainMenuStudent.cs
 * MainMenuProfessor.cs
 * MainMenuAssistant.cs
+* NewSubject.cs
+* ChangeSubject.cs
+* ChooseSubject.cs
 * UserManual.cs
 ### Classes:
+* Program.cs
 * Student.cs
+* Subject.cs
+* User.cs
 * ExamPart.cs
 
-The class ExamPart contains information about every part that will be contained in an exam.
-It has the number of points the students got on the part, the minimum number of points for a student to pass
-that specific part of the exam and the maximum number of points that can be earned on that specific part of the exam.
 
 ```
-public class ExamPart
+public class Subject
     {
-        public double coefficient { get; set; }
-        public double points { get; set; }
+        public int numParts { get; set; }
         public string name { get; set; }
-        public double minimumPointsToPass { get; set; }
-        public double maximum { get; set; }
-
-        public ExamPart(double coefficient, double points, string name, double minimumPointsToPass, double maximum)
+        public List<ExamPart> parts { get; set; }
+        public List<Student> students { get; set; }
+        public Subject()
         {
-            this.coefficient = coefficient;
-            this.points = points;
-            this.name = name;
-            this.minimumPointsToPass = minimumPointsToPass;
-            this.maximum = maximum;
+            parts = new List<ExamPart>();
+            students = new List<Student>();
         }
-
-        public double value()
-        {
-            return coefficient * points/maximum*100;
-        }
+        
     }
 ```
 
-the value() function returns the value that a part of an exam has on the overall grade.
+The class Subject contains information about every part that will be contained in a subject.
+It has a name, the number of parts it contains, a list of the parts it contains and a list of the students that attend that subject.
 
 
 ```
@@ -110,7 +102,7 @@ private void button3_Click(object sender, EventArgs e)
             bool success = int.TryParse(textBox3.Text, out txtno);
 
             int pointX = 25;
-            int pointY = 30;
+            int pointY = 10;
             panel1.Controls.Clear();
             if (success)
                 for (int i = 0; i < txtno; i++)
@@ -155,7 +147,8 @@ With panel1.Show() I display the panel with the dynamically added textboxes. The
 serves the purpose to help the user know at what exact part he is at the moment.
 
 ### You can find the user manual to the program in the Help section.
-![Untitled10](https://user-images.githubusercontent.com/85490029/121194147-c448df80-c86e-11eb-8575-152a3677d642.png)
+![9](https://user-images.githubusercontent.com/85490029/121540918-25a3b680-ca07-11eb-98a5-f4cdf5e5360f.png)
+![10](https://user-images.githubusercontent.com/85490029/121540922-25a3b680-ca07-11eb-89e1-a7eadb3cb8b7.png)
 ## Developed by: Blagoj Petkov 191097
 Every part of the code is written by me.
 <br/><br/>

@@ -61,6 +61,7 @@ namespace GradeHelper
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(352, 22);
             this.textBox2.TabIndex = 3;
+            this.textBox2.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -124,10 +125,10 @@ namespace GradeHelper
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

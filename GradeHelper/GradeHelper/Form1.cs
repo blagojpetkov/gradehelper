@@ -95,7 +95,7 @@ namespace GradeHelper
             ChooseSubject form = new ChooseSubject(subjects);
             if(form.ShowDialog() == DialogResult.OK)
             {
-                MainMenuStudent dialog = new MainMenuStudent(form.selectedSubject.students);
+                MainMenuStudent dialog = new MainMenuStudent(form.selectedSubject);
                 dialog.Text = form.selectedSubject.name;
                 dialog.ShowDialog();
             }
